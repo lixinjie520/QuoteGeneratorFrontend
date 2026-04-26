@@ -10,9 +10,9 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black/40"></div>
 
       <h1 className="relative text-white text-5xl z-10 leading-relaxed">
-        " If you never try, <br />
-        you'll never know. "<br />
-        <p className="relative text-2xl text-gray-400 mt-4 text-center z-10">
+        " IF YOU NEVER TRY, <br />
+        YOU'll NEVER KNOW. "<br />
+        <p className="relative text-2xl text-gray-300 mt-4 text-center z-10">
           — Start building today
         </p>
       </h1>
