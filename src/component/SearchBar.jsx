@@ -2,13 +2,13 @@ import React from 'react'
 
 const SearchBar = () => {
   return (
-    <div className="flex justify-center items-center w-lg mt-6 mx-auto gap-4">
+    <div className="flex justify-center items-center w-lg  gap-4">
       <input
         type="text"
         placeholder="search quotes..."
-        className="border rounded   w-xs px-3 py-1"
+        className="border rounded w-xs px-3 py-1"
       />
-      <button className="w-20 rounded bg-green-400 px-3 py-1 cursor-pointer">
+      <button className="w-20 rounded bg-green-300 px-3 py-1 cursor-pointer text-green-700 hover:text-green-900 hover:bg-green-400 ">
         Search
       </button>
     </div>
