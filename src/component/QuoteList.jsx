@@ -8,7 +8,6 @@ const QuoteList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-
   useEffect(() => {
     const fetchQuotes = async () => {
       
@@ -40,7 +39,7 @@ const QuoteList = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 m-5 mx-auto max-w-4xl">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-5 mx-auto max-w-4xl">
       {
         quotes.map((quote) => (
           <QuoteCard key={quote.id} quote={quote} />
