@@ -18,7 +18,6 @@ const QuoteDisplay = ({ quote, showDates = false }) => {
       {showDates && (
         <div
           className="flex justify-between items-center mt-6 "
-          onClick={(e) => e.preventDefault()} // 防止點擊按鈕觸發 Link
         >
           <div className="flex gap-2">
             <button className="text-sm px-3 py-1 rounded-md bg-gray-100 hover:bg-gray-200 cursor-pointer">

@@ -31,6 +31,10 @@ const QuoteDetailPage = () => {
     fetchQuote();
   }, [id]);
 
+    if (loading) return <p className="text-center mt-10">Loading quotes...</p>;
+    if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
+    if (!quote) return <p className="text-center mt-10">No quotes found.</p>;
+
   return (
     <div className="w-full h-full pb-6 ">
       <Header />
