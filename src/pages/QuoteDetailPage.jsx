@@ -8,16 +8,15 @@ import axios from "axios";
 const QuoteDetailPage = () => {
   const { id } = useParams();
 
-  const [quote, setQuote] = useState([]);
+  const [quote, setQuote] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const url = "http://localhost:8080/api/v1/quotes";
 
   useEffect(() => {
     const fetchQuote = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:8080/api/v1/quotes/${id}`,
-        );
+        const response = await axios.get(`${url}/${id}`);
 
         setQuote(response.data);
       } catch (err) {
@@ -31,14 +30,16 @@ const QuoteDetailPage = () => {
     fetchQuote();
   }, [id]);
 
-    if (loading) return <p className="text-center mt-10">Loading quotes...</p>;
-    if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
-    if (!quote) return <p className="text-center mt-10">No quotes found.</p>;
+  if (loading) return <p className="text-center mt-10">Loading quotes...</p>;
+  if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
+  if (!quote) return <p className="text-center mt-10">No quotes found.</p>;
 
   return (
     <div className="w-full h-full pb-6 ">
       <Header />
-      <QuoteDisplay quote={quote} showDates={true}/>
+      <div className="mt-20">
+        <QuoteDisplay quote={quote} showDates={true} onQuoteUpdated={setQuote} />
+      </div>
     </div>
   );
 };
