@@ -1,12 +1,11 @@
-import { useState } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import QuoteDetailPage from "./pages/QuoteDetailPage";
-import AddQuotePage from "./pages/AddQuotePage";
+import AddQuotePage from "./component/AddQuoteForm";
 import EditQuotePage from "./pages/EditQuotePage";
-import CategoryPage from './pages/CategoryPage';
-import HomePage from './pages/HomePage';
+import CategoryPage from "./pages/CategoryPage";
+import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
-
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/quotes/:id" element={<QuoteDetailPage />} />
-        <Route path="/quotes/add" element={<AddQuotePage />} />
         <Route path="/quotes/:id/edit" element={<EditQuotePage />} />
         <Route path="/categories" element={<CategoryPage />} />
 
@@ -24,4 +22,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
