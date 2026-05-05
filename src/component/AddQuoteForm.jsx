@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
+import toast from "react-hot-toast";
 
 const AddQuoteForm = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -11,7 +12,7 @@ const AddQuoteForm = ({ isOpen, onClose }) => {
     category: "",
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+
   const url = "http://localhost:8080/api/v1/quotes";
 
   const handleChange = (e) => {
@@ -25,20 +26,18 @@ const AddQuoteForm = ({ isOpen, onClose }) => {
 
   const postData = async () => {
     setLoading(true);
-    setError(false);
     try {
       const response = await axios.post(url, formData);
       // 新增成功要提醒讀者
-      if (response.status === 201 || response.status === 200) {
-        alert("Successfully added!");
-      }
+      toast.success("Successfully added.")
 
       // 成功後清空內容並關閉視窗
       setFormData({ content: "", author: "", category: "" });
       onClose();
     } catch (err) {
-      console.log("Something went wrong.", err);
-      setError(true);
+      console.err("Something went wrong.", err);
+      toast.error("Failed to add new quote.Please try again later.")
+      onClose()
     } finally {
       setLoading(false);
     }
@@ -77,17 +76,6 @@ const AddQuoteForm = ({ isOpen, onClose }) => {
         {loading && (
           <div className="absolute inset-0 z-10 bg-white/80 dark:bg-gray-800/80 flex items-center justify-center text-green-600 font-bold">
             正在新增...
-          </div>
-        )}
-        {error && (
-          <div className="absolute inset-0 z-10 bg-white/80 dark:bg-gray-800/80 flex flex-col items-center justify-center text-red-500 font-bold">
-            <p>新增失敗，請稍後再試!</p>
-            <button
-              onClick={() => setError(false)}
-              className="mt-2 text-sm underline text-gray-600"
-            >
-              重試
-            </button>
           </div>
         )}
 

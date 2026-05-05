@@ -20,7 +20,7 @@ const DeleteForm = ({ quote, onClose }) => {
       navigate("/")
     } catch (error) {
       console.error("Failed to delete.", error)
-      toast.error("Failed to delete quote.");
+      toast.error("Failed to delete quote.Please try again later.");
       onClose()
     } finally {
       setLoading(false)

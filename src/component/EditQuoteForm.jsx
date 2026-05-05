@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
+import toast from "react-hot-toast";
 
 const EditQuoteForm = ({ quote, onClose, onUpdate }) => {
 
-  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     content: `${quote.content}`,
@@ -26,20 +26,17 @@ const EditQuoteForm = ({ quote, onClose, onUpdate }) => {
     setLoading(true);
     try {
       const response = await axios.put(`${url}/${quote.id}`, formData);
-      if (response.status === 200) {
-        onUpdate(response.data)
-        alert("Successfully updated!");
-      }
+      toast.success("Successfully updated.")
+      onUpdate(response.data);
       setFormData({
         content: "",
         author: "",
         category: "",
       });
       onClose();
-      setError(false);
     } catch (error) {
       console.error(error);
-      setError(true);
+      toast.error("Failed to update quote.Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -72,17 +69,6 @@ const EditQuoteForm = ({ quote, onClose, onUpdate }) => {
         {loading && (
           <div className="absolute inset-0 z-10 bg-white/80 dark:bg-gray-800/80 flex items-center justify-center text-green-600 font-bold">
             正在更新...
-          </div>
-        )}
-        {error && (
-          <div className="absolute inset-0 z-10 bg-white/80 dark:bg-gray-800/80 flex flex-col items-center justify-center text-red-500 font-bold">
-            <p>新增失敗，請稍後再試!</p>
-            <button
-              onClick={() => setError(false)}
-              className="mt-2 text-sm underline text-gray-600"
-            >
-              重試
-            </button>
           </div>
         )}
 

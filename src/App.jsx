@@ -11,7 +11,7 @@ import { Toaster } from "react-hot-toast";
 function App() {
   return (
     <BrowserRouter>
-      <Toaster position="top-center"/>
+      <Toaster position="top-center" toastOptions={{duration:3000}} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/quotes/:id" element={<QuoteDetailPage />} />
