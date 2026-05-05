@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import EditQuoteForm from "./EditQuoteForm";
+import DeleteForm from "./DeleteForm";
 
 const QuoteDisplay = ({ quote, showDates = false, onQuoteUpdated }) => {
-  
   const [isEditBtnClicked, setIsEditBtnClicked] = useState(false);
+  const [isDeleteBtnClicked, setIsDeleteBtnClicked] = useState(false);
 
   return (
     <div className="relative w-md mx-auto bg-gray-100 rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 pt-8 m-1">
@@ -29,7 +30,10 @@ const QuoteDisplay = ({ quote, showDates = false, onQuoteUpdated }) => {
               Edit
             </button>
 
-            <button className="text-sm px-3 py-1 rounded-md bg-red-300 text-red-600 hover:bg-red-500 hover:text-white transition duration-200 cursor-pointer">
+            <button
+              onClick={() => setIsDeleteBtnClicked(true)}
+              className="text-sm px-3 py-1 rounded-md bg-red-300 text-red-600 hover:bg-red-500 hover:text-white transition duration-200 cursor-pointer"
+            >
               Delete
             </button>
           </div>
@@ -50,6 +54,13 @@ const QuoteDisplay = ({ quote, showDates = false, onQuoteUpdated }) => {
           quote={quote}
           onClose={() => setIsEditBtnClicked(false)}
           onUpdate={onQuoteUpdated}
+        />
+      )}
+
+      {isDeleteBtnClicked && (
+        <DeleteForm
+          quote={quote}
+          onClose={() => setIsDeleteBtnClicked(false)}
         />
       )}
     </div>

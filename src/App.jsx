@@ -6,10 +6,12 @@ import EditQuotePage from "./component/EditQuoteForm";
 import CategoryPage from "./pages/CategoryPage";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <BrowserRouter>
+      <Toaster position="top-center"/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/quotes/:id" element={<QuoteDetailPage />} />
