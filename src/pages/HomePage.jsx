@@ -26,12 +26,12 @@ const HomePage = () => {
       setLoading(false);
     }
   };
-
+  // 搜尋關鍵字
   const searchQuotes = async (keyword) => {
     try {
       setLoading(true);
 
-      const response = await axios.get(`${url}/search`, {
+      const response = await axios.get(`${url}`, {
         params: { keyword },
       });
 
@@ -44,16 +44,40 @@ const HomePage = () => {
     }
   };
 
+  // 分類呈現
+  const filterByCategory = async (category) => {
+    try {
+      setLoading(true);
+
+      if (!category) {
+        fetchQuotes();
+        return;
+      }
+
+      const response = await axios.get(`${url}`, {
+        params: { category },
+      });
+
+      setQuotes(response.data);
+      setError("");
+    } catch (error) {
+      setError("Failed to filter quotes.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchQuotes();
-  },[])
+  }, []);
+
   return (
     <div className="w-full h-full border-2 pb-6 ">
       <Header />
       <Hero />
       <section className="w-3xl md:w-4xl mx-auto flex items-center justify-center gap-4 mt-6">
-        <SearchBar onSearch={ searchQuotes } />
-        <CategoryFilter />
+        <SearchBar onSearch={searchQuotes} />
+        <CategoryFilter onCategoryChange={filterByCategory} />
       </section>
 
       <QuoteList quotes={quotes} loading={loading} error={error} />
