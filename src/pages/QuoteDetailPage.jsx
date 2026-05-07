@@ -35,11 +35,12 @@ const QuoteDetailPage = () => {
   if (!quote) return <p className="text-center mt-10">No quotes found.</p>;
 
   return (
-    <div className="w-full h-full pb-6 ">
-      <Header />
-      <div className="mt-20">
-        <QuoteDisplay quote={quote} showDates={true} onQuoteUpdated={setQuote} />
-      </div>
+    <div className="w-full h-full pb-6 mt-20">
+        <QuoteDisplay
+          quote={quote}
+          showDates={true}
+          onQuoteUpdated={setQuote}
+        />
     </div>
   );
 };
