@@ -7,77 +7,20 @@ import SearchBar from "../component/SearchBar";
 import CategoryFilter from "../component/CategoryFilter";
 import axios from "axios";
 
-const HomePage = () => {
-  const [quotes, setQuotes] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  const url = "http://localhost:8080/api/v1/quotes";
-
-  const fetchQuotes = async () => {
-    try {
-      setLoading(true);
-      const response = await axios.get(url);
-      setQuotes(response.data);
-      setError("");
-    } catch (error) {
-      setError("Failed to load quotes. Please try again later.");
-    } finally {
-      setLoading(false);
-    }
-  };
-  // 搜尋關鍵字
-  const searchQuotes = async (keyword) => {
-    try {
-      setLoading(true);
-
-      const response = await axios.get(`${url}`, {
-        params: { keyword },
-      });
-
-      setQuotes(response.data);
-      setError("");
-    } catch (error) {
-      setError("Failed to search quotes.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // 分類呈現
-  const filterByCategory = async (category) => {
-    try {
-      setLoading(true);
-
-      if (!category) {
-        fetchQuotes();
-        return;
-      }
-
-      const response = await axios.get(`${url}`, {
-        params: { category },
-      });
-
-      setQuotes(response.data);
-      setError("");
-    } catch (error) {
-      setError("Failed to filter quotes.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchQuotes();
-  }, []);
+const HomePage = ({
+  quotes,
+  loading,
+  error,
+  onSearch,
+  onCategoryChange,
+}) => {
 
   return (
     <div className="w-full h-full border-2 pb-6 ">
-      <Header quotes={quotes} />
       <Hero />
       <section className="w-3xl md:w-4xl mx-auto flex items-center justify-center gap-4 mt-6">
-        <SearchBar onSearch={searchQuotes} />
-        <CategoryFilter onCategoryChange={filterByCategory} />
+        <SearchBar onSearch={onSearch} />
+        <CategoryFilter onCategoryChange={onCategoryChange} />
       </section>
 
       <QuoteList quotes={quotes} loading={loading} error={error} />
