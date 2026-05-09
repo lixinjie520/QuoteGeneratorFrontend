@@ -7,7 +7,7 @@ import CategoriesPage from "./pages/CategoriesPage";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import { Toaster } from "react-hot-toast";
-import categoryQuotesPage from "./pages/categoryQuotesPage";
+import CategoryQuotesPage from "./pages/CategoryQuotesPage";
 import Header from "./component/Header";
 import axios from "axios";
 
@@ -17,7 +17,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const url = "http://localhost:8080/api/v1/quotes";
-
+  
   // 取得所有資料
   const fetchQuotes = async () => {
     try {
@@ -103,8 +103,8 @@ function App() {
           element={<CategoriesPage quotes={allQuotes} />}
         />
         <Route
-          path="/categories/:categoryName"
-          element={<categoryQuotesPage />}
+          path="/category/:categoryName"
+          element={<CategoryQuotesPage />}
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

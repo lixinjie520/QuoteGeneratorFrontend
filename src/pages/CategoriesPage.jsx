@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CategoriesPage = ({ quotes }) => {
   // 統計每個 category 出現幾次
@@ -19,7 +20,8 @@ const CategoriesPage = ({ quotes }) => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
         {categories.map((category) => (
-          <div
+          <Link
+            to={`/category/${category.name}`}
             key={category.name}
             className="rounded-2xl p-6 shadow-md hover:shadow-xl transition cursor-pointer bg-blue-100"
           >
@@ -27,7 +29,7 @@ const CategoriesPage = ({ quotes }) => {
               {category.name}
             </h2>
             <p className="text-gray-600 mt-2">{category.count} quotes</p>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
