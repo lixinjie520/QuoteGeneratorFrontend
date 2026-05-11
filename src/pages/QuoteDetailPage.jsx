@@ -20,8 +20,14 @@ const QuoteDetailPage = () => {
 
         setQuote(response.data);
       } catch (err) {
-        console.error("Failed to fetch quote:", err);
-        setError("Failed to load quote.");
+        console.error(err);
+
+        if (err.response?.status === 404) {
+          setError("This quote does not exist.");
+        } else {
+          setError("Failed to load quote.Please try again later.");
+        }
+
       } finally {
         setLoading(false);
       }
@@ -30,8 +36,8 @@ const QuoteDetailPage = () => {
     fetchQuote();
   }, [id]);
 
-  if (loading) return <p className="text-center mt-10">Loading quotes...</p>;
-  if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
+  if (loading) return <p className="text-center mt-20">Loading quotes...</p>;
+  if (error) return <p className="max-w-4xl max-auto text-2xl text-center mt-20 text-red-500">{error}</p>;
   if (!quote) return <p className="text-center mt-10">No quotes found.</p>;
 
   return (

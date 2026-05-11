@@ -28,7 +28,8 @@ function App() {
       setDisplayedQuotes(response.data);
 
       setError("");
-    } catch (error) {
+    } catch (err) {
+      console.error(err);
       setError("Failed to load quotes. Please try again later.");
     } finally {
       setLoading(false);
@@ -46,7 +47,8 @@ function App() {
 
       setDisplayedQuotes(response.data);
       setError("");
-    } catch (error) {
+    } catch (err) {
+      console.error(err)
       setError("Failed to search quotes.");
     } finally {
       setLoading(false);
@@ -69,7 +71,8 @@ function App() {
 
       setDisplayedQuotes(response.data);
       setError("");
-    } catch (error) {
+    } catch (err) {
+      console.error(err);
       setError("Failed to filter quotes.");
     } finally {
       setLoading(false);

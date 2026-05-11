@@ -20,8 +20,9 @@ const CategoryQuotesPage = () => {
         const res = await axios.get(`${url}/category/${categoryName}`);
         setQuotes(res.data);
         setError("");
-      } catch (error) {
-        setError("Failed to fetch quotes. Please try again later.");
+      } catch (err) {
+        console.error(err);
+        setError("Failed to load quotes. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -31,7 +32,11 @@ const CategoryQuotesPage = () => {
   }, [categoryName]);
   
     if (loading) return <p className="mt-20 text-center">Loading...</p>;
-    if (error) return <p className="mt-20 text-center text-red-500">{error}</p>;
+    if (error) return (
+      <p className="max-w-4xl max-auto text-2xl text-center mt-20 text-red-500">
+        {error}
+      </p>
+    );
   return (
     <div className="mt-20 max-w-4xl m-auto ">
       <h1 className="text-3xl text-center text-gray-700  font-bold py-4 px-2 bg-amber-100 rounded-2xl ">{categoryName}</h1>

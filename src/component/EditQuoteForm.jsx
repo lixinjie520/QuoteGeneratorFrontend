@@ -34,8 +34,8 @@ const EditQuoteForm = ({ quote, onClose, onUpdate }) => {
         category: "",
       });
       onClose();
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
       toast.error("Failed to update quote.Please try again later.");
     } finally {
       setLoading(false);

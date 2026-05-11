@@ -35,8 +35,8 @@ const AddQuoteForm = ({ isOpen, onClose }) => {
       setFormData({ content: "", author: "", category: "" });
       onClose();
     } catch (err) {
-      console.err("Something went wrong.", err);
-      toast.error("Failed to add new quote.Please try again later.")
+      console.error(err);
+      toast.error("Failed to add quote.Please try again later.")
       onClose()
     } finally {
       setLoading(false);
