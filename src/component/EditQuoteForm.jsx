@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import toast from "react-hot-toast";
+import { updateQuote } from "../api/quoteApi";
 
 const EditQuoteForm = ({ quote, onClose, onUpdate, onQuoteUpdated }) => {
   const [loading, setLoading] = useState(false);
@@ -10,7 +10,6 @@ const EditQuoteForm = ({ quote, onClose, onUpdate, onQuoteUpdated }) => {
     author: `${quote.author}`,
     category: `${quote.category}`,
   });
-  const url = "http://localhost:8080/api/v1/quotes";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +23,7 @@ const EditQuoteForm = ({ quote, onClose, onUpdate, onQuoteUpdated }) => {
   const editData = async () => {
     setLoading(true);
     try {
-      const response = await axios.put(`${url}/${quote.id}`, formData);
+      const response = await updateQuote(quote.id, formData)
       toast.success("Successfully updated.");
       onUpdate(response.data);//更新詳細頁
       onQuoteUpdated()//更新首頁

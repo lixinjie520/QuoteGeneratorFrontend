@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import toast from "react-hot-toast";
+import { createQuote } from "../api/quoteApi";
 
 const AddQuoteForm = ({ isOpen, onClose, onQuoteUpdated }) => {
   if (!isOpen) return null;
@@ -12,8 +12,6 @@ const AddQuoteForm = ({ isOpen, onClose, onQuoteUpdated }) => {
     category: "",
   });
   const [loading, setLoading] = useState(false);
-
-  const url = "http://localhost:8080/api/v1/quotes";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,7 +25,7 @@ const AddQuoteForm = ({ isOpen, onClose, onQuoteUpdated }) => {
   const postData = async () => {
     setLoading(true);
     try {
-      const response = await axios.post(url, formData);
+      const response = await createQuote(formData);
       // 新增成功要提醒讀者
       toast.success("Successfully added.")
       onQuoteUpdated();

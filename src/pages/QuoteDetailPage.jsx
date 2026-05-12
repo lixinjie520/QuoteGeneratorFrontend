@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../component/Header";
 import QuoteDisplay from "../component/QuoteDisplay";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import { getQuoteById } from "../api/quoteApi";
 
 
 const QuoteDetailPage = ({onQuoteUpdated}) => {
@@ -11,12 +11,11 @@ const QuoteDetailPage = ({onQuoteUpdated}) => {
   const [quote, setQuote] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const url = "http://localhost:8080/api/v1/quotes";
 
   useEffect(() => {
     const fetchQuote = async () => {
       try {
-        const response = await axios.get(`${url}/${id}`);
+        const response = await getQuoteById(id);
 
         setQuote(response.data);// 更新當前頁面
       } catch (err) {

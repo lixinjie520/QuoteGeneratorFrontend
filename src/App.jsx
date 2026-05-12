@@ -9,20 +9,19 @@ import NotFoundPage from "./pages/NotFoundPage";
 import { Toaster } from "react-hot-toast";
 import CategoryQuotesPage from "./pages/CategoryQuotesPage";
 import Header from "./component/Header";
-import axios from "axios";
+import { getAllQuotes, getQuotesByCategory, searchQuotesByKeyword } from "./api/quoteApi";
 
 function App() {
   const [allQuotes, setAllQuotes] = useState([]);
   const [displayedQuotes, setDisplayedQuotes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const url = "http://localhost:8080/api/v1/quotes";
   
   // 取得所有資料
   const fetchQuotes = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(url);
+      const response = await getAllQuotes();
 
       setAllQuotes(response.data);
       setDisplayedQuotes(response.data);
@@ -41,9 +40,7 @@ function App() {
     try {
       setLoading(true);
 
-      const response = await axios.get(url, {
-        params: { keyword },
-      });
+      const response = await searchQuotesByKeyword(keyword);
 
       setDisplayedQuotes(response.data);
       setError("");
@@ -65,9 +62,7 @@ function App() {
         return;
       }
 
-      const response = await axios.get(url, {
-        params: { category },
-      });
+      const response = await getQuotesByCategory(category);
 
       setDisplayedQuotes(response.data);
       setError("");

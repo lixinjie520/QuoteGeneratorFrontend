@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import QuoteDisplay from "../component/QuoteDisplay";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { getQuotesByCategory } from "../api/quoteApi";
 
 const CategoryQuotesPage = () => {
   const { categoryName } = useParams();
@@ -10,14 +11,12 @@ const CategoryQuotesPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const url = "http://localhost:8080/api/v1/quotes";
-
   useEffect(() => {
     const fetchCategoryQuotes = async () => {
       try {
         setLoading(true);
 
-        const res = await axios.get(`${url}/category/${categoryName}`);
+        const res = await getQuotesByCategory(categoryName);
         setQuotes(res.data);
         setError("");
       } catch (err) {

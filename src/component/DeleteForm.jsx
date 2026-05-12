@@ -1,19 +1,17 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { deleteQuote } from "../api/quoteApi";
 
 const DeleteForm = ({ quote, onClose, onQuoteUpdated }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  const url = "http://localhost:8080/api/v1/quotes";
-
   const DeleteData = async () => {
     setLoading(true);
     try {
-      await axios.delete(`${url}/${quote.id}`);
+      await deleteQuote(quote.id);
       toast.success("Quote deleted successfully!");
       onQuoteUpdated()
       onClose();
