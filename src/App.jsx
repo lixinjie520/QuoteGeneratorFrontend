@@ -86,7 +86,7 @@ function App() {
   return (
     <BrowserRouter>
       <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
-      <Header />
+      <Header onQuoteUpdated={fetchQuotes} />
       <Routes>
         <Route
           path="/"
@@ -97,10 +97,14 @@ function App() {
               error={error}
               onSearch={searchQuotes}
               onCategoryChange={filterByCategory}
+              onQuoteUpdated={fetchQuotes}
             />
           }
         />
-        <Route path="/quotes/:id" element={<QuoteDetailPage />} />
+        <Route
+          path="/quotes/:id"
+          element={<QuoteDetailPage onQuoteUpdated={fetchQuotes} />}
+        />
         <Route
           path="/categories"
           element={<CategoriesPage quotes={allQuotes} />}

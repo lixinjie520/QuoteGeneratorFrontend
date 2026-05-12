@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import toast from "react-hot-toast";
 
-const EditQuoteForm = ({ quote, onClose, onUpdate }) => {
-
+const EditQuoteForm = ({ quote, onClose, onUpdate, onQuoteUpdated }) => {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     content: `${quote.content}`,
@@ -26,8 +25,9 @@ const EditQuoteForm = ({ quote, onClose, onUpdate }) => {
     setLoading(true);
     try {
       const response = await axios.put(`${url}/${quote.id}`, formData);
-      toast.success("Successfully updated.")
-      onUpdate(response.data);
+      toast.success("Successfully updated.");
+      onUpdate(response.data);//更新詳細頁
+      onQuoteUpdated()//更新首頁
       setFormData({
         content: "",
         author: "",

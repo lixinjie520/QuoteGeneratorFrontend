@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import toast from "react-hot-toast";
 
-const AddQuoteForm = ({ isOpen, onClose }) => {
+const AddQuoteForm = ({ isOpen, onClose, onQuoteUpdated }) => {
   if (!isOpen) return null;
 
   const [formData, setFormData] = useState({
@@ -30,7 +30,7 @@ const AddQuoteForm = ({ isOpen, onClose }) => {
       const response = await axios.post(url, formData);
       // 新增成功要提醒讀者
       toast.success("Successfully added.")
-
+      onQuoteUpdated();
       // 成功後清空內容並關閉視窗
       setFormData({ content: "", author: "", category: "" });
       onClose();

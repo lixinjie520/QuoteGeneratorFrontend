@@ -13,8 +13,8 @@ const HomePage = ({
   error,
   onSearch,
   onCategoryChange,
+  onQuoteUpdated,
 }) => {
-
   return (
     <div className="w-full h-full pb-6 ">
       <Hero />
@@ -23,7 +23,12 @@ const HomePage = ({
         <CategoryFilter onCategoryChange={onCategoryChange} />
       </section>
 
-      <QuoteList quotes={quotes} loading={loading} error={error} />
+      <QuoteList
+        quotes={quotes}
+        onQuoteUpdated={onQuoteUpdated}
+        loading={loading}
+        error={error}
+      />
       <Footer />
     </div>
   );

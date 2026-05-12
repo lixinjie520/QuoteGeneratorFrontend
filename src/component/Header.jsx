@@ -3,7 +3,7 @@ import { FaBars, FaMoon, FaSun} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AddQuoteForm from "./AddQuoteForm";
 
-const Header = ({quotes}) => {
+const Header = ({onQuoteUpdated}) => {
   const [isOpen, setIsOpen] = useState(false); // Mobile Menu 狀態
   const [isFormOpen, setIsFormOpen] = useState(false); // 表單彈窗狀態
 
@@ -109,7 +109,11 @@ const Header = ({quotes}) => {
         </nav>
       </header>
       {/* 懸浮表單component */}
-      <AddQuoteForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
+      <AddQuoteForm
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        onQuoteUpdated={onQuoteUpdated}
+      />
     </>
   );
 };

@@ -5,11 +5,11 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 
-const QuoteDetailPage = () => {
+const QuoteDetailPage = ({onQuoteUpdated}) => {
   const { id } = useParams();
 
   const [quote, setQuote] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const url = "http://localhost:8080/api/v1/quotes";
 
@@ -18,7 +18,7 @@ const QuoteDetailPage = () => {
       try {
         const response = await axios.get(`${url}/${id}`);
 
-        setQuote(response.data);
+        setQuote(response.data);// 更新當前頁面
       } catch (err) {
         console.error(err);
 
@@ -27,7 +27,6 @@ const QuoteDetailPage = () => {
         } else {
           setError("Failed to load quote.Please try again later.");
         }
-
       } finally {
         setLoading(false);
       }
@@ -37,16 +36,22 @@ const QuoteDetailPage = () => {
   }, [id]);
 
   if (loading) return <p className="text-center mt-20">Loading quotes...</p>;
-  if (error) return <p className="max-w-4xl max-auto text-2xl text-center mt-20 text-red-500">{error}</p>;
+  if (error)
+    return (
+      <p className="max-w-4xl max-auto text-2xl text-center mt-20 text-red-500">
+        {error}
+      </p>
+    );
   if (!quote) return <p className="text-center mt-10">No quotes found.</p>;
 
   return (
     <div className="w-full h-full pb-6 mt-20">
-        <QuoteDisplay
-          quote={quote}
-          showDates={true}
-          onQuoteUpdated={setQuote}
-        />
+      <QuoteDisplay
+        quote={quote}
+        showDates={true}
+        onUpdate={setQuote}
+        onQuoteUpdated={onQuoteUpdated}
+      />
     </div>
   );
 };

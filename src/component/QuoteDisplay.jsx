@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import EditQuoteForm from "./EditQuoteForm";
 import DeleteForm from "./DeleteForm";
 
-const QuoteDisplay = ({ quote, showDates = false, onQuoteUpdated }) => {
+const QuoteDisplay = ({ quote, showDates = false, onUpdate , onQuoteUpdated }) => {
   const [isEditBtnClicked, setIsEditBtnClicked] = useState(false);
   const [isDeleteBtnClicked, setIsDeleteBtnClicked] = useState(false);
 
@@ -53,7 +53,8 @@ const QuoteDisplay = ({ quote, showDates = false, onQuoteUpdated }) => {
         <EditQuoteForm
           quote={quote}
           onClose={() => setIsEditBtnClicked(false)}
-          onUpdate={onQuoteUpdated}
+          onUpdate={onUpdate}
+          onQuoteUpdated={onQuoteUpdated}
         />
       )}
 
@@ -61,6 +62,7 @@ const QuoteDisplay = ({ quote, showDates = false, onQuoteUpdated }) => {
         <DeleteForm
           quote={quote}
           onClose={() => setIsDeleteBtnClicked(false)}
+          onQuoteUpdated={onQuoteUpdated}
         />
       )}
     </div>
