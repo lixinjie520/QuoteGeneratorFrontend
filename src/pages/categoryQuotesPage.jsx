@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import QuoteDisplay from "../component/QuoteDisplay";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+import { Link, useParams } from "react-router-dom";
 import { getQuotesByCategory } from "../api/quoteApi";
 
 const CategoryQuotesPage = () => {
@@ -38,10 +37,14 @@ const CategoryQuotesPage = () => {
     );
   return (
     <div className="mt-20 max-w-4xl m-auto ">
-      <h1 className="text-3xl text-center text-gray-700  font-bold py-4 px-2 bg-amber-100 rounded-2xl ">{categoryName}</h1>
+      <h1 className="text-3xl text-center text-gray-700  font-bold py-4 px-2 bg-amber-100 rounded-2xl ">
+        {categoryName}
+      </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {quotes.map((quote) => (
-          <QuoteDisplay key={quote.id} quote={quote} />
+          <Link to={`/quotes/${quote.id}`} key={quote.id}>
+            <QuoteDisplay quote={quote} />
+          </Link>
         ))}
       </div>
     </div>
