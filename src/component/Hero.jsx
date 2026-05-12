@@ -29,7 +29,7 @@ const Hero = ({ quotes }) => {
         "{quote?.content}"
       </h1>
       <p className="text-2xl text-gray-300 mt-4 text-center z-10">
-        — {quote?.author}
+        —— {quote?.author}
       </p>
     </div>
   );
