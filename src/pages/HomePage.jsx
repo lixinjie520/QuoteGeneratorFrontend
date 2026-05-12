@@ -17,7 +17,7 @@ const HomePage = ({
 }) => {
   return (
     <div className="w-full h-full pb-6 ">
-      <Hero />
+      <Hero quotes={quotes} />
       <section className="w-3xl md:w-4xl mx-auto flex items-center justify-center gap-4 mt-6">
         <SearchBar onSearch={onSearch} />
         <CategoryFilter onCategoryChange={onCategoryChange} />
