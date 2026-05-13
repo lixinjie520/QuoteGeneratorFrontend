@@ -9,14 +9,19 @@ import NotFoundPage from "./pages/NotFoundPage";
 import { Toaster } from "react-hot-toast";
 import CategoryQuotesPage from "./pages/CategoryQuotesPage";
 import Header from "./component/Header";
-import { getAllQuotes, getQuotesByCategory, searchQuotesByKeyword } from "./api/quoteApi";
+import {
+  getAllQuotes,
+  getQuotesByCategory,
+  searchQuotesByKeyword,
+} from "./api/quoteApi";
+import QuotesPage from "./pages/QuotesPage";
 
 function App() {
   const [allQuotes, setAllQuotes] = useState([]);
   const [displayedQuotes, setDisplayedQuotes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  
+
   // 取得所有資料
   const fetchQuotes = async () => {
     try {
@@ -45,7 +50,7 @@ function App() {
       setDisplayedQuotes(response.data);
       setError("");
     } catch (err) {
-      console.error(err)
+      console.error(err);
       setError("Failed to search quotes.");
     } finally {
       setLoading(false);
@@ -87,6 +92,19 @@ function App() {
           path="/"
           element={
             <HomePage
+              quotes={displayedQuotes}
+              loading={loading}
+              error={error}
+              onSearch={searchQuotes}
+              onCategoryChange={filterByCategory}
+              onQuoteUpdated={fetchQuotes}
+            />
+          }
+        />
+        <Route
+          path="/quotes"
+          element={
+            <QuotesPage
               quotes={displayedQuotes}
               loading={loading}
               error={error}

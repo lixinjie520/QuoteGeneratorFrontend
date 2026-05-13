@@ -8,7 +8,7 @@ const Header = ({onQuoteUpdated}) => {
   const [isFormOpen, setIsFormOpen] = useState(false); // 表單彈窗狀態
 
   const navItems = [
-    { name: "Quotes", to: "/" },
+    { name: "Quotes", to: "/quotes" },
     { name: "Categories", to: "/categories" },
     { name: "+ Add Quote", to: "#", isModal: true },
   ];

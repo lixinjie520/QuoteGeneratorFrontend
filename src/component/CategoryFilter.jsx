@@ -18,7 +18,7 @@ const CategoryFilter = ({onCategoryChange}) => {
         id="category"
         value={category}
         onChange={handleChange}
-        className="border rounded w-30 px-3 py-1"
+        className="border rounded w-40 px-3 py-1 text-center"
       >
         <option value="">Category</option>
         <option value="motivation">Motivation</option>

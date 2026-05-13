@@ -7,7 +7,7 @@ const QuoteDisplay = ({ quote, showDates = false, onUpdate , onQuoteUpdated }) =
   const [isDeleteBtnClicked, setIsDeleteBtnClicked] = useState(false);
 
   return (
-    <div className="relative w-md mx-auto bg-gray-100 rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 pt-8 m-1">
+    <div className="relative w-md mx-auto bg-gray-100 rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 m-1">
       <div className="absolute top-2 right-3 text-xs bg-blue-100 text-blue-600 px-3 py-1 rounded-full">
         {quote.category}
       </div>
