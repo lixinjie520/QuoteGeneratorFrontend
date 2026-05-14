@@ -15,6 +15,7 @@ import {
   searchQuotesByKeyword,
 } from "./api/quoteApi";
 import QuotesPage from "./pages/QuotesPage";
+import ScrollToTop from "./component/ScrollToTop";
 
 function App() {
   const [allQuotes, setAllQuotes] = useState([]);
@@ -87,6 +88,7 @@ function App() {
     <BrowserRouter>
       <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
       <Header onQuoteUpdated={fetchQuotes} />
+      <ScrollToTop/>
       <Routes>
         <Route
           path="/"
