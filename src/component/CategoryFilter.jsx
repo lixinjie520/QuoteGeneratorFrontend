@@ -12,13 +12,13 @@ const CategoryFilter = ({onCategoryChange}) => {
   };
 
   return (
-    <div className=" bg-white dark:bg-gray-600 dark:text-gray-50 mt-6">
+    <div className="mt-6">
       <select
         name="category"
         id="category"
         value={category}
         onChange={handleChange}
-        className="border rounded max-w-sm px-3 py-1 text-center"
+        className="border rounded max-w-sm px-3 py-1 text-center dark:bg-gray-600 dark:text-gray-50"
       >
         <option value="">Category</option>
         <option value="motivation">Motivation</option>
