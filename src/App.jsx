@@ -16,6 +16,7 @@ import {
 } from "./api/quoteApi";
 import QuotesPage from "./pages/QuotesPage";
 import ScrollToTop from "./component/ScrollToTop";
+import MainLayout from "./MainLayout";
 
 function App() {
   const [allQuotes, setAllQuotes] = useState([]);
@@ -106,51 +107,57 @@ function App() {
   return (
     <BrowserRouter>
       <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
-      <Header
-        onQuoteUpdated={fetchQuotes}
-        onThemeChange={isDarkMode}
-        toggleTheme={toggleTheme}
-      />
       <ScrollToTop />
       <Routes>
         <Route
-          path="/"
           element={
-            <HomePage
-              quotes={displayedQuotes}
-              loading={loading}
-              error={error}
-              onSearch={searchQuotes}
-              onCategoryChange={filterByCategory}
-              onQuoteUpdated={fetchQuotes}
+            <MainLayout
+              fetchQuotes={fetchQuotes}
+              isDarkMode={isDarkMode}
+              toggleTheme={toggleTheme}
             />
           }
-        />
-        <Route
-          path="/quotes"
-          element={
-            <QuotesPage
-              quotes={displayedQuotes}
-              loading={loading}
-              error={error}
-              onSearch={searchQuotes}
-              onCategoryChange={filterByCategory}
-              onQuoteUpdated={fetchQuotes}
-            />
-          }
-        />
-        <Route
-          path="/quotes/:id"
-          element={<QuoteDetailPage onQuoteUpdated={fetchQuotes} />}
-        />
-        <Route
-          path="/categories"
-          element={<CategoriesPage quotes={allQuotes} />}
-        />
-        <Route
-          path="/category/:categoryName"
-          element={<CategoryQuotesPage />}
-        />
+        >
+          <Route
+            path="/"
+            element={
+              <HomePage
+                quotes={displayedQuotes}
+                loading={loading}
+                error={error}
+                onSearch={searchQuotes}
+                onCategoryChange={filterByCategory}
+                onQuoteUpdated={fetchQuotes}
+              />
+            }
+          />
+          <Route
+            path="/quotes"
+            element={
+              <QuotesPage
+                quotes={displayedQuotes}
+                loading={loading}
+                error={error}
+                onSearch={searchQuotes}
+                onCategoryChange={filterByCategory}
+                onQuoteUpdated={fetchQuotes}
+              />
+            }
+          />
+          <Route
+            path="/quotes/:id"
+            element={<QuoteDetailPage onQuoteUpdated={fetchQuotes} />}
+          />
+          <Route
+            path="/categories"
+            element={<CategoriesPage quotes={allQuotes} />}
+          />
+          <Route
+            path="/category/:categoryName"
+            element={<CategoryQuotesPage />}
+          />
+        </Route>
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
