@@ -17,7 +17,7 @@ const QuoteList = ({quotes, loading, error}) => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mx-auto max-w-4xl">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mx-auto max-w-3xl mt-6">
       {quotes.map((quote) => (
         <QuoteCard
           key={quote.id}

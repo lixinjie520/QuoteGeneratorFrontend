@@ -7,11 +7,11 @@ const QuoteDisplay = ({ quote, showDates = false, onUpdate , onQuoteUpdated }) =
   const [isDeleteBtnClicked, setIsDeleteBtnClicked] = useState(false);
 
   return (
-    <div className="relative w-md mx-auto bg-gray-100 rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 m-1">
-      <div className="absolute top-2 right-3 text-xs bg-blue-100 text-blue-600 px-3 py-1 rounded-full">
+    <div className="relative w-full mx-auto rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-100">
+      <div className="absolute top-2 right-3 text-xs bg-blue-100 text-blue-600 dark:bg-gray-600 dark:text-gray-50 px-3 py-1 rounded-full">
         {quote.category}
       </div>
-      <p className="text-lg md:text-xl font-medium text-gray-800 text-center leading-relaxed mt-4">
+      <p className="text-lg md:text-xl font-medium text-gray-800 dark:text-gray-200 text-center leading-relaxed mt-4">
         "{quote.content}"
       </p>
 
@@ -25,14 +25,14 @@ const QuoteDisplay = ({ quote, showDates = false, onUpdate , onQuoteUpdated }) =
           <div className="flex gap-2">
             <button
               onClick={() => setIsEditBtnClicked(true)}
-              className="text-sm px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 cursor-pointer"
+              className="text-sm px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 transition duration-200 cursor-pointer dark:bg-gray-600 dark:text-gray-50 dark:hover:bg-gray-900 dark:hover:text-gray-200"
             >
               Edit
             </button>
 
             <button
               onClick={() => setIsDeleteBtnClicked(true)}
-              className="text-sm px-3 py-1 rounded-md bg-red-300 text-red-600 hover:bg-red-500 hover:text-white transition duration-200 cursor-pointer"
+              className="text-sm px-3 py-1 rounded-md bg-red-300 text-red-600 hover:bg-red-500 hover:text-white dark:bg-gray-600 dark:text-gray-50 dark:hover:bg-gray-900 dark:hover:text-gray-200 transition duration-200 cursor-pointer"
             >
               Delete
             </button>

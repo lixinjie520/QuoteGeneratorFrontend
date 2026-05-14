@@ -3,7 +3,7 @@ import { FaBars, FaMoon, FaSun} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AddQuoteForm from "./AddQuoteForm";
 
-const Header = ({onQuoteUpdated}) => {
+const Header = ({ onQuoteUpdated, onThemeChange, toggleTheme }) => {
   const [isOpen, setIsOpen] = useState(false); // Mobile Menu 狀態
   const [isFormOpen, setIsFormOpen] = useState(false); // 表單彈窗狀態
 
@@ -32,25 +32,6 @@ const Header = ({onQuoteUpdated}) => {
     setIsOpen(false); //點選後自動收合選單
   };
 
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
-  });
-
-  // 切換 dark class 到 html
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [isDarkMode]);
-
-  const toggleTheme = () => {
-    setIsDarkMode((prev) => !prev);
-  };
-
   return (
     <>
       <header className="flex w-full h-18 mx-auto justify-between items-center font-semibold  py-4 fixed top-0 left-0 right-0 z-50  shadow shadow-gray-400 bg-gray-100 dark:bg-gray-700 dark:text-white dark:shadow-gray-800 pr-4 ">
@@ -71,7 +52,7 @@ const Header = ({onQuoteUpdated}) => {
             className="pr-3 text-lg cursor-pointer focus:outline-none"
             onClick={toggleTheme}
           >
-            {isDarkMode ? <FaSun /> : <FaMoon />}
+            {onThemeChange ? <FaSun /> : <FaMoon />}
           </button>
           {/* Desktop Menu */}
           <ul className="md:flex gap-4 hidden ">

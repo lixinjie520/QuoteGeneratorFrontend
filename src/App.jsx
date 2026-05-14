@@ -23,6 +23,25 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => !prev);
+  };
+
+  // 切換 dark class 到 html
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [isDarkMode]);
+
   // 取得所有資料
   const fetchQuotes = async () => {
     try {
@@ -87,8 +106,12 @@ function App() {
   return (
     <BrowserRouter>
       <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
-      <Header onQuoteUpdated={fetchQuotes} />
-      <ScrollToTop/>
+      <Header
+        onQuoteUpdated={fetchQuotes}
+        onThemeChange={isDarkMode}
+        toggleTheme={toggleTheme}
+      />
+      <ScrollToTop />
       <Routes>
         <Route
           path="/"

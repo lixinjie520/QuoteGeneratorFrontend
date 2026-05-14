@@ -36,16 +36,18 @@ const CategoryQuotesPage = () => {
       </p>
     );
   return (
-    <div className="mt-20 max-w-4xl m-auto ">
-      <h1 className="text-3xl text-center text-gray-700  font-bold py-4 px-2 bg-amber-100 rounded-2xl ">
-        {categoryName}
-      </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {quotes.map((quote) => (
-          <Link to={`/quotes/${quote.id}`} key={quote.id}>
-            <QuoteDisplay quote={quote} />
-          </Link>
-        ))}
+    <div className="w-full  min-h-screen bg-white dark:bg-gray-600 mt-18">
+      <div className=" max-w-4xl mx-auto pt-6">
+        <h1 className="text-3xl text-center text-gray-700 dark:bg-gray-800 dark:text-gray-50  font-bold py-4 px-2 bg-amber-100 rounded-2xl mb-6 ">
+          {categoryName}
+        </h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {quotes.map((quote) => (
+            <Link to={`/quotes/${quote.id}`} key={quote.id}>
+              <QuoteDisplay quote={quote} />
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

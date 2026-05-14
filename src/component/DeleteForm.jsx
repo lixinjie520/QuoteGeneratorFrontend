@@ -47,7 +47,7 @@ const DeleteForm = ({ quote, onClose, onQuoteUpdated }) => {
         </div>
 
         <form onSubmit={handleSubmit} className="py-10 px-6">
-          <p className="text-center mb-6 text-lg dark:bg-amber-600 dark:text-white px-4 py-2">
+          <p className="text-center mb-6 text-lg dark:text-gray-50 px-4 py-2">
             Are you sure you want to delete this quote?
           </p>
           <div className="flex justify-center items-center gap-4 w-full sm:w-auto">
@@ -55,19 +55,19 @@ const DeleteForm = ({ quote, onClose, onQuoteUpdated }) => {
               type="button"
               onClick={onClose}
               disabled={loading}
-              className="flex-1 sm:flex-none px-4 py-1 rounded-lg bg-red-300 text-red-600 hover:bg-red-500 hover:text-white transition duration-200 font-semibold cursor-pointer"
+              className="flex-1 sm:flex-none px-4 py-1 rounded-lg bg-red-300 text-red-600 hover:bg-red-500 hover:text-white dark:bg-gray-600 dark:text-gray-50 dark:hover:bg-red-900 dark:hover:text-gray-200 transition duration-200 font-semibold cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 sm:flex-none px-4 py-1 rounded-lg bg-green-300 text-green-600 hover:bg-green-500 hover:text-white transition duration-200 font-semibold cursor-pointer"
+              className="flex-1 sm:flex-none px-4 py-1 rounded-lg bg-green-300 text-green-600 hover:bg-green-500 hover:text-white dark:text-gray-50 dark:bg-gray-600 dark:hover:text-gray-200 dark:hover:bg-green-800 transition duration-200 font-semibold cursor-pointer"
             >
               Yes
             </button>
 
-            {loading ? "Deleting..." : ""}
+            {/* {loading ? "Deleting..." : ""} */}
           </div>
         </form>
       </div>

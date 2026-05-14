@@ -9,12 +9,13 @@ const QuoteDetailPage = ({onQuoteUpdated}) => {
   const { id } = useParams();
 
   const [quote, setQuote] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState();
   const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchQuote = async () => {
       try {
+        setLoading(true)
         const response = await getQuoteById(id);
 
         setQuote(response.data);// 更新當前頁面
@@ -44,13 +45,15 @@ const QuoteDetailPage = ({onQuoteUpdated}) => {
   if (!quote) return <p className="text-center mt-10">No quotes found.</p>;
 
   return (
-    <div className="w-full h-full pb-6 mt-20">
-      <QuoteDisplay
-        quote={quote}
-        showDates={true}
-        onUpdate={setQuote}
-        onQuoteUpdated={onQuoteUpdated}
-      />
+    <div className="w-full min-h-screen bg-white dark:bg-gray-600 mx-auto h-full pb-6  mt-18 ">
+      <div className="max-w-md mx-auto pt-8">
+        <QuoteDisplay
+          quote={quote}
+          showDates={true}
+          onUpdate={setQuote}
+          onQuoteUpdated={onQuoteUpdated}
+        />
+      </div>
     </div>
   );
 };

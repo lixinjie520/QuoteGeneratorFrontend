@@ -72,8 +72,8 @@ const EditQuoteForm = ({ quote, onClose, onUpdate, onQuoteUpdated }) => {
         )}
 
         <form onSubmit={handleSubmit} className="py-10 px-6">
-          <h1 className="text-center font-bold mb-8 text-2xl bg-amber-200 dark:bg-amber-600 dark:text-white px-4 py-2 rounded shadow-sm">
-            Add New Quote
+          <h1 className="text-center font-bold mb-8 text-2xl bg-amber-200   px-4 py-2 rounded shadow-sm dark:bg-gray-600 dark:text-gray-50 ">
+            Edit Quote
           </h1>
 
           <div className="space-y-5">
@@ -91,7 +91,7 @@ const EditQuoteForm = ({ quote, onClose, onUpdate, onQuoteUpdated }) => {
                 onChange={handleChange}
                 id="content"
                 required
-                className="w-full p-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-amber-400 outline-none h-32"
+                className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-400 dark:bg-gray-600 dark:text-gray-50 dark:focus:ring-gray-200 outline-none h-32"
               />
             </div>
 
@@ -99,7 +99,7 @@ const EditQuoteForm = ({ quote, onClose, onUpdate, onQuoteUpdated }) => {
             <div>
               <label
                 htmlFor="author"
-                className="text-lg font-medium block dark:text-gray-200 mb-2"
+                className="text-lg font-medium block dark:text-gray-200 mb-2 "
               >
                 Author:
               </label>
@@ -110,7 +110,7 @@ const EditQuoteForm = ({ quote, onClose, onUpdate, onQuoteUpdated }) => {
                 onChange={handleChange}
                 id="author"
                 required
-                className="w-full p-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-amber-400 outline-none"
+                className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-400 outline-none dark:bg-gray-600 dark:text-gray-50 dark:focus:ring-gray-200"
               />
             </div>
 
@@ -121,7 +121,7 @@ const EditQuoteForm = ({ quote, onClose, onUpdate, onQuoteUpdated }) => {
                 value={formData.category}
                 onChange={handleChange}
                 required
-                className="w-full sm:w-auto border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white px-4 py-2 rounded-lg text-center outline-none focus:ring-2 focus:ring-amber-400"
+                className="w-full sm:w-auto border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white px-4 py-2 rounded-lg text-center outline-none focus:ring-2 focus:ring-amber-400 dark:focus:ring-gray-200"
               >
                 <option value="">-- Category --</option>
                 <option value="Motivation">Motivation</option>
@@ -135,13 +135,13 @@ const EditQuoteForm = ({ quote, onClose, onUpdate, onQuoteUpdated }) => {
                 <button
                   type="button"
                   onClick={onClose}
-                  className="flex-1 sm:flex-none px-6 py-2 rounded-lg bg-red-300 text-red-600 hover:bg-red-500 hover:text-white transition duration-200 font-semibold"
+                  className="flex-1 sm:flex-none px-6 py-2 rounded-lg bg-red-300 text-red-600 hover:bg-red-500 hover:text-white transition duration-200 font-semibold cursor-pointer dark:bg-gray-600 dark:text-gray-50 dark:hover:bg-red-900 dark:hover:text-gray-200"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 sm:flex-none px-6 py-2 rounded-lg bg-green-500 hover:bg-green-600 text-white transition duration-200 font-semibold shadow-md"
+                  className="flex-1 sm:flex-none px-6 py-2 rounded-lg bg-green-500 hover:bg-green-600 text-white dark:text-gray-50 dark:bg-gray-600 dark:hover:text-gray-200 dark:hover:bg-green-900transition duration-200 font-semibold shadow-md cursor-pointer"
                 >
                   Update
                 </button>
