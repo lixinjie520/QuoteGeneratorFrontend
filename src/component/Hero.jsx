@@ -20,17 +20,17 @@ const Hero = ({ quotes }) => {
   const quote = quotes[randomIndex]
   return (
     <div
-      className="h-screen bg-cover bg-center flex items-center justify-center relative mt-18"
+      className="md:h-[50vh] bg-cover bg-center flex items-center justify-center relative mt-18 py-14 px-6"
       style={{ backgroundImage: `url(${heroBg})` }}
     >
       <div className="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
 
-      <h1 className="max-w-3xl text-center text-white dark:text-gray-200 text-4xl z-10 leading-relaxed">
-        "{quote?.content}"
-      </h1>
-      <p className="text-2xl text-gray-300 mt-4 text-center z-10">
-        —— {quote?.author}
-      </p>
+      <div className="flex-cols z-40 text-center">
+        <h1 className="max-w-3xl  text-white dark:text-gray-200 text-4xl leading-relaxed">
+          "{quote?.content}"
+        </h1>
+        <p className="text-2xl text-gray-300 mt-4">—— {quote?.author}</p>
+      </div>
     </div>
   );
 }

@@ -19,9 +19,9 @@ const HomePage = ({
   const featuredQuotes = quotes.slice(0, 4);
 
   return (
-    <div className="min-h-screen w-full bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 pb-6">
+    <div className="flex flex-col w-full min-h-screen mx-auto bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 pb-6 overflow-x-hidden">
       <Hero quotes={quotes} />
-      <div className="w-full mx-auto">
+      <main className="flex-1 w-full mx-auto">
         <SearchBar onSearch={onSearch} onQuoteUpdated={onQuoteUpdated} />
         <h2 className="text-2xl font-bold text-center mt-8 mb-6">
           Featured Quotes
@@ -38,7 +38,7 @@ const HomePage = ({
         >
           Browse All Quotes
         </Link>
-      </div>
+      </main>
       <Footer />
     </div>
   );
