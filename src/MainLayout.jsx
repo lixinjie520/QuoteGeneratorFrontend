@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "./component/Header";
+import Footer from "./component/Footer";
 
 const MainLayout = ({ fetchQuotes, isDarkMode, toggleTheme }) => {
   return (
@@ -10,7 +11,10 @@ const MainLayout = ({ fetchQuotes, isDarkMode, toggleTheme }) => {
         toggleTheme={toggleTheme}
       />
 
-      <Outlet />
+      <main className="flex-1 pt-18">
+        <Outlet />
+      </main>
+      <Footer />
     </>
   );
 };

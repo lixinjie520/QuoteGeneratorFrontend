@@ -20,7 +20,7 @@ const Hero = ({ quotes }) => {
   const quote = quotes[randomIndex]
   return (
     <div
-      className="md:h-[50vh] bg-cover bg-center flex items-center justify-center relative mt-18 py-14 px-6"
+      className="md:h-[50vh] bg-cover bg-center flex items-center justify-center relative py-14 px-6"
       style={{ backgroundImage: `url(${heroBg})` }}
     >
       <div className="absolute inset-0 bg-black/40 dark:bg-black/60"></div>

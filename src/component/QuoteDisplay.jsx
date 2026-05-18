@@ -21,8 +21,8 @@ const QuoteDisplay = ({ quote, showDates = false, onUpdate , onQuoteUpdated }) =
       </div>
 
       {showDates && (
-        <div className="flex justify-between items-center mt-6 ">
-          <div className="flex gap-2">
+        <div className="flex justify-between items-center mt-6 gap-2">
+          <div className="flex gap-3">
             <button
               onClick={() => setIsEditBtnClicked(true)}
               className="text-sm px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 transition duration-200 cursor-pointer dark:bg-gray-600 dark:text-gray-50 dark:hover:bg-gray-900 dark:hover:text-gray-200"

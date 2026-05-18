@@ -27,14 +27,14 @@ const SearchBar = ({ onSearch, onQuoteUpdated }) => {
       onSubmit={handleSubmit}
       className="max-w-4xl md:w-full mx-auto flex items-center justify-center gap-4 mt-6"
     >
-      <div className="relative flex justify-center max-w-3xl gap-4 mx-4">
+      <div className="relative flex justify-start md:justify-center max-w-3xl gap-4 mx-1 md:mx-4">
         <input
           type="text"
           name="keyword"
           value={keyword}
           onChange={handleChange}
           placeholder="search quotes..."
-          className="border max-w-md md:min-w-lg rounded px-3 py-1 bg-white text-gray-900 dark:bg-gray-800 dark:text-white dark:border-gray-600"
+          className="border max-w-md md:min-w-lg rounded px-1 md:px-3 py-1 bg-white text-gray-900 dark:bg-gray-800 dark:text-white dark:border-gray-600"
         />
 
         {keyword && (

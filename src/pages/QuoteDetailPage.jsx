@@ -45,7 +45,7 @@ const QuoteDetailPage = ({onQuoteUpdated}) => {
   if (!quote) return <p className="text-center mt-10">No quotes found.</p>;
 
   return (
-    <div className="w-full min-h-screen bg-white dark:bg-gray-600 mx-auto h-full pb-6  mt-18 ">
+    <div className="w-full min-h-dvh bg-white dark:bg-gray-600 mx-auto h-full pb-6 px-4">
       <div className="max-w-md mx-auto pt-8">
         <QuoteDisplay
           quote={quote}

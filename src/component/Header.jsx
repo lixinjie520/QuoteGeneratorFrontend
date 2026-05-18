@@ -68,7 +68,7 @@ const Header = ({ onQuoteUpdated, onThemeChange, toggleTheme }) => {
           </ul>
 
           {/* Mobile Icon */}
-          <div className="text-end pr-4 md:hidden pt-1.5">
+          <div className="text-end md:hidden pt-1.5">
             <button onClick={handleClick}>
               <FaBars className="cursor-pointer "></FaBars>
             </button>
@@ -76,7 +76,7 @@ const Header = ({ onQuoteUpdated, onThemeChange, toggleTheme }) => {
 
           {/* Mobile Menu */}
           {isOpen && (
-            <ul className="flex flex-col items-center text-lg font-normal py-2 bg-amber-950 text-white absolute top-14  right-0 w-32 md:hidden ">
+            <ul className="flex flex-col items-center text-lg font-normal py-2 bg-gray-600 text-white absolute top-14  -right-3 w-32 md:hidden ">
               {navItems.map((item, index) => (
                 <li key={index}>
                   <Link to={item.to} onClick={(e) => handleItemClick(e, item)}>

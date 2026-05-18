@@ -19,7 +19,7 @@ const HomePage = ({
   const featuredQuotes = quotes.slice(0, 4);
 
   return (
-    <div className="flex flex-col w-full min-h-screen mx-auto bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 pb-6 overflow-x-hidden">
+    <div className="flex flex-col w-full min-h-dvh mx-auto bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 pb-6 overflow-x-hidden">
       <Hero quotes={quotes} />
       <main className="flex-1 w-full mx-auto">
         <SearchBar onSearch={onSearch} onQuoteUpdated={onQuoteUpdated} />
@@ -39,7 +39,6 @@ const HomePage = ({
           Browse All Quotes
         </Link>
       </main>
-      <Footer />
     </div>
   );
 };

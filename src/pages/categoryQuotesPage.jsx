@@ -5,7 +5,7 @@ import { getQuotesByCategory } from "../api/quoteApi";
 
 const CategoryQuotesPage = () => {
   const { categoryName } = useParams();
-  
+
   const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -28,16 +28,17 @@ const CategoryQuotesPage = () => {
 
     fetchCategoryQuotes();
   }, [categoryName]);
-  
-    if (loading) return <p className="mt-20 text-center">Loading...</p>;
-    if (error) return (
-      <p className="max-w-4xl max-auto text-2xl text-center mt-20 text-red-500">
+
+  if (loading) return <p className="text-center">Loading...</p>;
+  if (error)
+    return (
+      <p className="max-w-4xl max-auto text-2xl text-center text-red-500">
         {error}
       </p>
     );
   return (
-    <div className="w-full  min-h-screen bg-white dark:bg-gray-600 mt-18">
-      <div className=" max-w-4xl mx-auto pt-6">
+    <div className="w-full min-h-dvh mx-auto bg-white dark:bg-gray-600 pb-10">
+      <div className=" max-w-4xl pt-6">
         <h1 className="text-3xl text-center text-gray-700 dark:bg-gray-800 dark:text-gray-50  font-bold py-4 px-2 bg-amber-100 rounded-2xl mb-6 ">
           {categoryName}
         </h1>
